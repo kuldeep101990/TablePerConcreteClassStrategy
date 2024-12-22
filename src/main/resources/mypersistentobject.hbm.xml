@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+  <class name="tablePerConcreteClass.Person" abstract="true">
+    <id name="id" column="ID" type="long" />
+    <property name="name" column="NAME" type="string" />
+    <property name="address" column="ADDRESS" type="string" />
+    <union-subclass name="tablePerConcreteClass.Employee" table="EMPLOYEES">
+      <property name="salary" column="SALARY" type="double" />
+      <property name="title" column="TITLE" type="string" />
+    </union-subclass>
+    <union-subclass name="tablePerConcreteClass.Student" table="STUDENTS">
+      <property name="major" column="MAJOR" type="string" />
+      <property name="gpa" column="GPA" type="double" />
+    </union-subclass>
+  </class>
+</hibernate-mapping>
+
